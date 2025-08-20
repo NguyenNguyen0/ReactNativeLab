@@ -15,6 +15,11 @@ import { Shape } from "./Lab01/Shape";
 import { Square } from "./Lab01/Square";
 import { Student } from "./Lab01/Student";
 import { User } from "./Lab01/User";
+import { Logger } from "./Lab01/Logger";
+import { MathUtil } from "./Lab01/MathUtil";
+import { Repository } from "./Lab01/Repository";
+import { Stack } from "./Lab01/Stack";
+import { Vehicle, Car as ICar, Bike } from "./Lab01/Vehicle";
 
 console.log("01. Person");
 const nguyen: Person = new Person("nguyen", 12);
@@ -99,3 +104,48 @@ console.log(bookBox);
 const productBox: Box<Product> = new Box();
 productBox.addItem(new Product("laptop", 121))
 console.log(productBox);
+
+console.log("17. Singleton Logger")
+const logger: Logger = Logger.getInstance();
+logger.log()
+
+console.log("18. MathUtil");
+console.log("1 + 2 + 4 + 5 = " + MathUtil.add(1, 2, 4, 5));
+console.log("121 - 2231 = " + MathUtil.subtract(121, 2231));
+console.log("1 * 2 * 4 * 5 = " + MathUtil.multiply(1, 2, 4, 5));
+console.log("121 / 2231 = " + MathUtil.divide(121, 2231));
+
+console.log("19. Animal polymorphism");
+const hoangThuong: Cat = new Cat('Meo beo', () => console.log("meo meo"));
+const bayMon: Dog = new Dog('Sussan', () => console.log('gau gau'));
+
+hoangThuong.moving()
+bayMon.moving()
+
+console.log("20. Vehicle, Car, Bike");
+const toyota: Vehicle = new ICar("Toyota", "sa", 1999);
+const xeCutKit: Vehicle = new Bike("Xe dap 3 banh", "xe kut kit", 2077);
+
+toyota.moving();
+xeCutKit.moving();
+
+console.log("21. Generic Repository");
+const repo: Repository<Cat> = new Repository();
+repo.add(new Cat('Meo beo', () => console.log("meo meo")))
+repo.add(new Cat('Meo map', () => console.log("meo meo")))
+repo.add(new Cat('Meo meo', () => console.log("meo meo")))
+console.log(repo.getAll());
+
+
+console.log("22. Stack");
+const stack: Stack<Dog> = new Stack();
+stack.push(new Dog('Sussan', () => console.log('gau gau')));
+stack.push(new Dog('Sussan 2', () => console.log('gau gau')));
+console.log(stack);
+stack.pop();
+console.log(stack);
+console.log(stack.peek());
+console.log(stack.isEmpty());
+
+
+

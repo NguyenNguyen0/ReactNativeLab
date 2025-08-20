@@ -11,6 +11,10 @@ export class Animal implements IAnimal {
         this.name = name;
         this.sound = sound;
     }
+
+    moving() {
+        console.log("Walking...");
+    }
 }
 
 export class Cat extends Animal {
@@ -30,5 +34,9 @@ export class Dog extends Animal {
 
     bark() {
         this.sound()
+    }
+
+    moving() {
+        console.log("Running...");
     }
 }
